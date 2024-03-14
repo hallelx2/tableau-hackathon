@@ -1,6 +1,6 @@
 import os
-from fastapi import FastAPI, Query
-from fastapi.responses import JSONResponse
+from fastapi import FastAPI, Query,  Body, Response
+from fastapi.responses import JSONResponse, RedirectResponse
 import json  # Import the json library
 from typing import Optional
 import pantab as pt
@@ -12,6 +12,13 @@ from publish import publish_hyper
 
 
 app = FastAPI()
+
+@app.get("/")
+async def root():
+    """
+    Home route that welcomes users to Marketeer APIs and redirects to Swagger docs.
+    """
+    return RedirectResponse(url="/docs")
 
 @app.get("/scrape-aliexpress")
 async def scrape_products(search_term: str = Query(..., description="The product to search for"),
