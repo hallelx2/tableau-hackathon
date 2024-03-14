@@ -23,7 +23,6 @@ def scrape_aliexpress(search_term, num_pages=5):
 
     website = 'https://www.aliexpress.com'
     browser.get(website)  # Navigate to AliExpress
-    browser.maximize_window()  # Maximize the window for better visibility
 
     # Find the search bar and button elements
     input_search = browser.find_element(By.CLASS_NAME, 'search--keyword--15P08Ji')
@@ -77,6 +76,6 @@ def scrape_aliexpress(search_term, num_pages=5):
        sleep(10)  # Wait for page to load
 
     # Create and return the DataFrame
-    data_set = create_data_set(products, price, shipping, stores)
+    data_set = create_data_set(product_descriptions, prices, shipping_prices, store_names)
     df = clean_alibaba(pd.DataFrame(data_set))
     return df
