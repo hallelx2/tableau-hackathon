@@ -37,16 +37,16 @@ def main():
 
         # Display scraped data (ensure all data is shown)
         st.header("Scraped Data")
-        st.dataframe(df)  # Display the entire DataFrame
+        st.write(df)  # Display the entire DataFrame
 
-        with st.button('Publish'):
-            # Tableau publishing options
-            hyper_name = dataframe_to_hyper(df)
-            tableau_server_address = st.text_input("Tableau Server Address")
-            tableau_site_name = st.text_input("Tableau Site Name")
-            tableau_token_name = st.text_input("Tableau Token Name")
-            tableau_token_value = st.text_input('Tableau Token Value', type = 'password')
-            publish_hyper(hyper_name, tableau_server_address, tableau_site_name, tableau_token_name, tableau_token_value, project_name='default')
+    with st.button('Publish'):
+        # Tableau publishing options
+        hyper_name = dataframe_to_hyper(df)
+        tableau_server_address = st.text_input("Tableau Server Address")
+        tableau_site_name = st.text_input("Tableau Site Name")
+        tableau_token_name = st.text_input("Tableau Token Name")
+        tableau_token_value = st.text_input('Tableau Token Value', type = 'password')
+        publish_hyper(hyper_name, tableau_server_address, tableau_site_name, tableau_token_name, tableau_token_value, project_name='default')
 
 
 if __name__=='__main__':
