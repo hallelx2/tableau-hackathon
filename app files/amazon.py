@@ -11,6 +11,11 @@ import numpy as np
 # import matplotlib.pyplot as plt
 # import seaborn as sns
 
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument('--headless')
+chrome_options.add_argument('--no-sandbox')
+chrome_options.add_argument('--disable-dev-shm-usage')
+
 def build_amazon_search_url(search_param):
     base_url = "https://www.amazon.com/s"
     search_query = {"k": search_param}
@@ -56,7 +61,7 @@ def create_data_set(product_desc: list, prices: list) -> dict:
 def scrape_amazon(search_param, number_of_pages=5):
     
     # instantiate a browser object
-    browser = webdriver.Chrome(service = ChromeService(ChromeDriverManager().install()))
+    browser = webdriver.Chrome(service = ChromeService(ChromeDriverManager().install()), options = chrome_options)
     
     # Build a URL for search and get the page
     website = build_amazon_search_url(search_param)

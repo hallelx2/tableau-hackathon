@@ -8,6 +8,11 @@ from webdriver_manager.chrome import ChromeDriverManager
 from time import sleep
 from clean_data import clean_alibaba, create_data_set
 
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument('--headless')
+chrome_options.add_argument('--no-sandbox')
+chrome_options.add_argument('--disable-dev-shm-usage')
+
 def scrape_aliexpress(search_term, num_pages=5):
     """Scrapes product information from AliExpress for the given search term.
 
@@ -19,7 +24,7 @@ def scrape_aliexpress(search_term, num_pages=5):
        pd.DataFrame: A DataFrame containing the scraped product data.
     """
 
-    browser = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))  # Open a Chrome browser instance using ChromeDriverManager
+    browser = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options = chrome_options)  # Open a Chrome browser instance using ChromeDriverManager
 
     website = 'https://www.aliexpress.com'
     browser.get(website)  # Navigate to AliExpress
