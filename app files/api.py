@@ -1,3 +1,4 @@
+import os
 from fastapi import FastAPI, Query
 from fastapi.responses import JSONResponse
 import json  # Import the json library
@@ -63,7 +64,7 @@ async def scrape_amazon_products(
 @app.post("/scrape-and-publish")
 async def scrape_and_publish(
     source: str = Query(..., description="Choose 'amazon' or 'aliexpress'"),
-    market_item: str = Query(..., description='What would you love to get data on?'),
+    search_param: str = Query(..., description='What would you love to get data on?'),
     pages: int = Query(5, description= 'Number of pages'),
     server_address: str = Query('https://10ax.online.tableau.com', description="Tableau Server address"),
     site_name: str = Query(..., description="Tableau Site Name"),
@@ -76,11 +77,17 @@ async def scrape_and_publish(
         if source not in ("amazon", "aliexpress"):
             return JSONResponse(status_code=400, content={"error": "Invalid source"})
 
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+
         # Call the appropriate scraper function
         if source == "amazon":
-            hyper_name = await scrape_amazon(market_item)  # Replace with actual implementation
+            hyper_res = scrape_amazon(search_param)  # Replace with actual implementation
+            hyper_path = dataframe_to_hyper(hyper_res, f'{search_param} amazon.hyper')
+            hyper_name = os.path.join(current_dir, hyper_path)
         elif source == "aliexpress":
-            hyper_name = await scrape_aliexpress(market_item)  # Replace with actual implementation
+            hyper_res = scrape_aliexpress(search_param)  # Replace with actual implementation
+            hyper_path = dataframe_to_hyper(hyper_res, f'{search_param} aliexpress.hyper')
+            hyper_name = os.path.join(current_dir, hyper_path)
 
         # Publish the Hyper file to Tableau
         publish_hyper(hyper_name, server_address, site_name, token_name, token_value, project_name)
