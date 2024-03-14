@@ -62,6 +62,6 @@ Requirements: Python, chrome browser, pip or pipenv, tableau onlline account
 - Use ```pipenv sync``` to activate the virtual environment
 - Navigate to the ```app files``` direectory to  run the streamlit app and also the API
 - To deploy the API, run ```uvicorn api:app --reload```. THis opens up a swagger documentation in your browser which you can interact with
-- Run ```streamlir run webapp.py``` to be able to ineract with the front end.
+- Run ```streamlit run webapp.py``` to be able to ineract with the front end.
 - The hyper files get sent to your tableau depending on the api you chose. Now you can visit tableau to continue your analysis
 

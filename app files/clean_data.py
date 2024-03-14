@@ -24,20 +24,13 @@ def create_data_set(product_descriptions: list, prices: list, shipping_prices: l
     """
 
     # Ensure all lists have the same length
-    min_length = min(len(product_descriptions), len(prices))
-    if shipping_prices is not None:
-        min_length = min(min_length, len(shipping_prices))
-    if store_names is not None:
-        min_length = min(min_length, len(store_names))
-
-    if min_length != len(product_descriptions) or min_length != len(prices):
-        raise ValueError("List lengths do not match. Ensure data is consistent.")
+    min_length = min(len(product_descriptions), len(prices), len(shipping_prices), len(store_names))
 
     # Select elements from longer lists up to the minimum length
     product_desc_subset = product_descriptions[:min_length]
     prices_subset = prices[:min_length]
-    shipping_subset = [] if shipping_prices is None else shipping_prices[:min_length]
-    store_names_subset = [] if store_names is None else store_names[:min_length]
+    shipping_subset = shipping_prices[:min_length]
+    store_names_subset = store_names[:min_length]
 
     data_set = {
         'Product Description': product_desc_subset,
