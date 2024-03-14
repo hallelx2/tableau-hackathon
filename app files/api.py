@@ -16,9 +16,15 @@ app = FastAPI()
 @app.get("/")
 async def root():
     """
-    Home route that welcomes users to Marketeer APIs and redirects to Swagger docs.
+    Home route with multiple path operations.
     """
-    return RedirectResponse(url="/docs")
+    # Option 1: Redirect to Swagger docs
+    if "docs" in Body(...):  # Check for a query parameter or body request indicating docs
+        return RedirectResponse(url="/docs")
+
+    # Option 2: Add a welcome message
+    return {"message": "Welcome to Marketeer APIs!"}
+
 
 @app.get("/scrape-aliexpress")
 async def scrape_products(search_term: str = Query(..., description="The product to search for"),
