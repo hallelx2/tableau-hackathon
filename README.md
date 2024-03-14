@@ -1,4 +1,4 @@
-## Marketeer: A Web App for Data-Driven Market Insights
+## Marketeer: A Web API for Data-Driven Market Insights
 
 **Inspiration**
 
