@@ -88,10 +88,9 @@ def scrape_amazon(search_param, number_of_pages=5):
         for j in range(len(products)):
            try:
                product_desc.append(products[j].text)
-               prices.append(price[j].text)
+               prices.append(float(price[j].text))
                # ratings.append(rating[j].text)
            except:
-               # Handle potential errors during extraction
                pass
         
         # Navigate to the next page

@@ -98,6 +98,7 @@ async def scrape_and_publish(
 
         # Publish the Hyper file to Tableau
         publish_hyper(hyper_name, server_address, site_name, token_name, token_value, project_name)
+        os.remove(hyper_name)
 
         return JSONResponse(content={"message": "Data scraped and published successfully"})
     except Exception as e:
