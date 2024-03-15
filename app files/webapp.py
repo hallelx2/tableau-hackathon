@@ -35,25 +35,19 @@ def main():
             st.error("Invalid source selection")
             return
 
-        # Display scraped data (ensure all data is shown)
-        st.header("Scraped Data")
-        st.write(df)  # Display the entire DataFrame
-    
-        # Tableau publishing options
-        hyper_name = dataframe_to_hyper(df, f'{product_name} {source}.hyper')
-        tableau_server_address = st.text_input("Tableau Server Address")
-        tableau_site_name = st.text_input("Tableau Site Name")
-        tableau_token_name = st.text_input("Tableau Token Name")
-        tableau_token_value = st.text_input('Tableau Token Value', type = 'password')
+    # Display scraped data (ensure all data is shown)
+    st.header("Scraped Data")
+    st.write(df)  # Display the entire DataFrame
 
-        if st.button('Publish'):
-            # # Tableau publishing options
-            # hyper_name = dataframe_to_hyper(df, f'{product_name} {source}.hyper')
-            # tableau_server_address = st.text_input("Tableau Server Address")
-            # tableau_site_name = st.text_input("Tableau Site Name")
-            # tableau_token_name = st.text_input("Tableau Token Name")
-            # tableau_token_value = st.text_input('Tableau Token Value', type = 'password')
-            publish_hyper(hyper_name, tableau_server_address, tableau_site_name, tableau_token_name, tableau_token_value, project_name='default')
+    # Tableau publishing options
+    hyper_name = dataframe_to_hyper(df, f'{product_name} {source}.hyper')
+    tableau_server_address = st.text_input("Tableau Server Address")
+    tableau_site_name = st.text_input("Tableau Site Name")
+    tableau_token_name = st.text_input("Tableau Token Name")
+    tableau_token_value = st.text_input('Tableau Token Value', type = 'password')
+
+    if st.button('Publish'):
+        publish_hyper(hyper_name, tableau_server_address, tableau_site_name, tableau_token_name, tableau_token_value, project_name='default')
 
 
 if __name__=='__main__':

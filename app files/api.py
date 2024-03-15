@@ -18,12 +18,7 @@ async def root():
     """
     Home route with multiple path operations.
     """
-    # Option 1: Redirect to Swagger docs
-    if "docs" in Body(...):  # Check for a query parameter or body request indicating docs
-        return RedirectResponse(url="/docs")
-
-    # Option 2: Add a welcome message
-    return {"message": "Welcome to Marketeer APIs!"}
+    return RedirectResponse(url="/docs")
 
 
 @app.get("/scrape-aliexpress")
