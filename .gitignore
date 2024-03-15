@@ -1,2 +1,5 @@
-app files/.env
+# Default ignored files
+/shelf/
+/workspace.xml
 notebooks
+.idea/workspace.xml
