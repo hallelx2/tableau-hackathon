@@ -1,5 +1,5 @@
 ARG PORT 8000
-FROM cypress/browaer:latest
+FROM cypress/browser:latest
 RUN apt-get install python 3 -y
 RUN echo $(python3 -m site --user)
 COPY /app\ file/requirements.txt ./

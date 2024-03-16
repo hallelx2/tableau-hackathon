@@ -1,6 +1,5 @@
 ## Marketeer: A Web API and App for Data-Driven Market Insights
 
-Web App = [Try Here for the web app](https://marketeerapp.onrender.com)
 
 **Inspiration**
 
