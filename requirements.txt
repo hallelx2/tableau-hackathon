@@ -1,0 +1,9 @@
+selenium
+pandas
+webdriver-manager
+seaborn
+fastapi
+uvicorn
+tableauhyperapi
+pantab
+tableauserverclient
