@@ -1,4 +1,5 @@
 selenium
+streamlit
 pandas
 webdriver-manager
 seaborn
