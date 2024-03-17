@@ -1,9 +1,15 @@
-ARG PORT 8000
-FROM cypress/browser:latest
-RUN apt-get install python 3 -y
-RUN echo $(python3 -m site --user)
-COPY requirements.txt .
-ENV PATH /home/root/.local/bin:${PATH}
-RUN at-get update && apt-get install -y python3-pip && pip install -r requirements.txt
-COPY . .
-CMD [ "uvicorn", "api:app", "--host", "0.0.0.0", "--port", "$PORT" ]
+FROM python:3.10
+
+WORKDIR /app
+
+COPY . /app
+
+RUN pip install --trusted-host pypi.python.org -r requirements.txt
+
+RUN apt-get update && apt-get install -y wget unzip && \
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
+apt install -y ./google-chrome-stable_current_amd64.deb && \
+rm google-chrome-stable_current_amd64.deb && \
+apt-get clean
+
+CMD ["streamlit", "run", "webapp.py"]
