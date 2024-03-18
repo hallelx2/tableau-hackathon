@@ -58,11 +58,23 @@ We believe Marketeer has the potential to revolutionise the way businesses and c
 Join us on our journey to unlock the power of market data, using the prowess of **Tableau APIs**!
 
 ## Usage
+
+### Update
+A Docker file has been provided to make running the app easy. Follow the following steps to do this:
+- Clone the repository and navigate to the ```app files``` directory
+    ```cd app\ files```
+
+- Run the following commands
+    ```docker build -t marketeer .```
+    ```docker run marketeer```
+
+This will boot the application instantly and you can interact with it easily. A web app link will be provided soon
+
 Requirements: Python, chrome browser, pip or pipenv, tableau onlline account
 
 - Use ```pipenv sync``` to activate the virtual environment
 - Navigate to the ```app files``` direectory to  run the streamlit app and also the API
 - To deploy the API, run ```uvicorn api:app --reload```. THis opens up a swagger documentation in your browser which you can interact with
 - Run ```streamlit run webapp.py``` to be able to ineract with the front end.
-- The hyper files get sent to your tableau depending on the api you chose. Now you can visit tableau to continue your analysis
+- The hyper files get sent to your tableau depending on the api you chose. Now you can visit tableau to continue your analysis.
 
