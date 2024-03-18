@@ -2,7 +2,7 @@
 
 
 To try out, visit [Here](https://marketeerapp.onrender.com/).
-Guide for local deployment at the bottom of the REAAD.me document
+Guide for local deployment at the bottom of the READ.me document
 
 
 **Inspiration**
