@@ -1,6 +1,10 @@
 ## Marketeer: A Web API and App for Data-Driven Market Insights
 
 
+To try out, visit [Here](https://marketeerapp.onrender.com/).
+Guide for local deployment at the bottom of the REAAD.me document
+
+
 **Inspiration**
 
 In today's competitive business landscape, data-driven decision making is crucial for success. However, technical expertise for data analysis can be a barrier for many business owners. Marketeer aims to bridge this gap by providing a web application that empowers both businesses and individual consumers to gain market insights and make informed choices.
